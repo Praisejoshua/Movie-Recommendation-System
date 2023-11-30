@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Recommendation System</h1>
+        <form method="POST">
+            <label for="movie_title">Enter a movie title:</label>
+            <input type="text" id="movie_title" name="movie_title" required>
+            <input type="submit" value="Get Recommendations">
+        </form>
+        <div class="recommendations">
+            {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+            {% endif %}
+            {% if recommendations %}
+            <h2>Recommendations:</h2>
+            <ul>
+                {% for recommendation in recommendations %}
+                <li>{{ recommendation }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
